@@ -4,7 +4,7 @@ class Solution:
         in_degrees = {i: 0 for i in range(numCourses)}
         
         for prerequisite in prerequisites:
-            src, dst = prerequisite[0], prerequisite[1]
+            src, dst = prerequisite[1], prerequisite[0]
             graph[src].append(dst)
             in_degrees[dst] += 1
             
@@ -17,7 +17,7 @@ class Solution:
         course_ordering = []
         while sources:
             vertex = sources.popleft()
-            course_ordering.insert(0, vertex)
+            course_ordering.append(vertex)
             
             for child in graph[vertex]:
                 in_degrees[child] -= 1
